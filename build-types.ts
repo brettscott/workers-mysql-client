@@ -11,10 +11,11 @@ await build({
   },
   package: {
     // package.json properties
-    name: "cloudflare-workers-postgres",
+    name: "workers-mysql-client",
     version: '0.0.0',
   },
   typeCheck: false,
   test: false,
-  declaration: true
+  declaration: true,
+  scriptModule: false,
 });

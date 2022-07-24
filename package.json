@@ -1,8 +1,9 @@
 {
-  "name": "@bubblydoo/cloudflare-workers-postgres-client",
-  "version": "0.0.8",
+  "name": "@nicgene/workers-mysql-client",
+  "version": "1.0.0-alpha",
+  "license": "MIT",
   "type": "module",
-  "main": "./build/postgres.js",
+  "main": "./build/mysql.js",
   "types": "./build/types-package/types/mod.d.ts",
   "sideEffects": false,
   "scripts": {
@@ -10,14 +11,14 @@
     "prepublishOnly": "npm run build"
   },
   "files": [
-    "build/postgres.js",
+    "build/mysql.js",
     "build/types-package/types/"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/bubblydoo/cloudflare-workers-postgres-client"
+    "url": "https://github.com/nicgene/workers-mysql-client"
   },
-  "homepage": "https://github.com/bubblydoo/cloudflare-workers-postgres-client#readme",
+  "homepage": "https://github.com/nicgene/workers-mysql-client#readme",
   "devDependencies": {
     "@cloudflare/workers-types": "^3.13.0",
     "cloudflare-workers-compat": "~0.1.5",

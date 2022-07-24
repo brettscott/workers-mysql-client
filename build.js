@@ -27,8 +27,8 @@ const compatConfig = await generateBundlerConfig({
 
 await build({
   ...common,
-  entryPoints: [path.join(__dirname, "build", "postgres-deno.js")],
-  outfile: path.join(__dirname, "build", "postgres-tmp.js"),
+  entryPoints: [path.join(__dirname, "build", "mysql-deno.js")],
+  outfile: path.join(__dirname, "build", "mysql-tmp.js"),
   plugins: [
     replace({
       delimiters: ['', ''],
@@ -46,15 +46,17 @@ await build({
   ],
   define: {
     ...compatConfig.define,
-    "Deno.startTls": "workerDenoPostgres_startTls",
-    "Deno.connect": "workerDenoPostgres_connect",
+    // "Deno.startTls": "workerDenoPostgres_startTls",
+    // "Deno.connect": "workerDenoPostgres_connect",
+    "Deno.startTls": "startTls",
+    "Deno.connect": "connect",
   },
 });
 
 await build({
   ...common,
-  entryPoints: [path.join(__dirname, "build", "postgres-tmp.js")],
-  outfile: path.join(__dirname, "build", "postgres.js"),
+  entryPoints: [path.join(__dirname, "build", "mysql-tmp.js")],
+  outfile: path.join(__dirname, "build", "mysql.js"),
   plugins: [
     replace({
       delimiters: ['', ''],

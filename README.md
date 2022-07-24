@@ -1,21 +1,21 @@
-![npm](https://img.shields.io/npm/v/@bubblydoo/cloudflare-workers-postgres-client)
+![npm](https://img.shields.io/npm/v/@nicgene/workers-mysql-client)
 
-# Cloudflare Workers Postgres Client
+# Cloudflare Workers MySQL Client
 
 This is an experimental module.
 
-Heavily based on [cloudflare/worker-template-postgres](https://github.com/cloudflare/worker-template-postgres), but cleaned up and bundled into a single module.
+Heavily based on [bubblydoo/cloudflare-workers-postgres-client ](https://github.com/bubblydoo/cloudflare-workers-postgres-client).
 
-This needs a Cloudflare Tunnel to your database running. To setup a Cloudflare Tunnel, you can use [this docker-compose.yml](https://github.com/bubblydoo/cloudflare-tunnel-postgres-docker-compose/blob/main/docker-compose.yml).
+<!-- This needs a Cloudflare Tunnel to your database running. To setup a Cloudflare Tunnel, you can use [this docker-compose.yml](https://github.com/bubblydoo/cloudflare-tunnel-postgres-docker-compose/blob/main/docker-compose.yml). -->
 
 ```bash
-npm i @bubblydoo/cloudflare-workers-postgres-client
+npm i @nicgene/workers-mysql-client
 # or
-yarn add @bubblydoo/cloudflare-workers-postgres-client
+yarn add @nicgene/workers-mysql-client
 ```
 
-```ts
-import { Client } from '@bubblydoo/cloudflare-workers-postgres-client';
+<!-- ```ts
+import { Client } from '@nicgene/workers-mysql-client';
 
 const createClient = () => {
   return new Client({
@@ -46,4 +46,4 @@ export default worker;
 
 ## How it works
 
-It uses the [postgres](https://deno.land/x/postgres@v0.16.1) Deno module, bundles it, and adds some code to make it work with Cloudflare Workers.
+It uses the [postgres](https://deno.land/x/postgres@v0.16.1) Deno module, bundles it, and adds some code to make it work with Cloudflare Workers. -->
