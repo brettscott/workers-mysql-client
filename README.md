@@ -1,6 +1,127 @@
-![npm](https://img.shields.io/npm/v/@nicgene/workers-mysql-client)
-
 # Cloudflare Workers MySQL Client
+
+
+## Intro
+
+Fork from [@nicgene/workers-mysql-client](https://img.shields.io/npm/v/@nicgene/workers-mysql-client).
+
+The script uses the MySQL driver from Deno and produces a JavaScript (TypeScript) version to be used in workers (eg Cloudflare Workers).
+
+## Changes
+
+- Updated dependencies.
+- Increased documentation.
+
+## Create a working MySQL driver for Cloudflare Worker
+
+1. Install Deno
+
+[Instructions](https://deno.land/manual@v1.31.1/getting_started/installation)
+
+2. Build
+
+```sh
+yarn install
+yarn build
+```
+
+3. Remove top-level await by wrapping with an `async`.  Search for "await setup" in `mysql.js`.
+
+**Broken:**
+
+```js
+await setup(DEFAULT_CONFIG)
+var mod = await (async function () {
+  return {
+    LogLevels,
+    Logger,
+    LoggerConfig,
+    handlers,
+    getLogger,
+    debug,
+    info,
+    warning,
+    error,
+    critical,
+    setup,
+  }
+})()
+var logger = mod.getLogger()
+```
+
+**Fixed:**
+
+```js
+let mod
+let logger
+;(async () => {
+  try {
+    await setup(DEFAULT_CONFIG)
+  } catch (err) {
+    console.error(err)
+  }
+  mod = await (async function () {
+    return {
+      LogLevels,
+      Logger,
+      LoggerConfig,
+      handlers,
+      getLogger,
+      debug,
+      info,
+      warning,
+      error,
+      critical,
+      setup,
+    }
+  })()
+  logger = mod.getLogger()
+})()
+```
+
+4. Comment out second `case 18`.  Search for "case 18" in `mysql.js`.
+
+**Broken:**
+
+```js
+case 18:
+return new Date(val)
+```
+
+**Fixed:**
+
+```js
+// case 18:
+//   return new Date(val)
+```
+
+5. Copy `build/mysql.js` to your project.
+
+6. Create TypeScript type definition in your project. Incomplete:
+
+```ts
+export type MySQLClient = {
+  execute(str: string): Promise<MySQLResponse>
+  query<T>(str: string, params: unknown[]): Promise<T>
+}
+
+export type MySQLResponse = {
+  affectedRows: number
+  lastInsertId: number
+}
+```
+
+## Example `mysql.js`
+
+A copy of [mysql.js](./mysql.js) is provided.
+
+## Feedback
+
+Raise an issue if there's a better way :)
+
+----
+
+# Original
 
 This is an experimental module.
 
