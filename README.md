@@ -113,7 +113,7 @@ export type MySQLResponse = {
 
 ## Example `mysql.js`
 
-A copy of [mysql.js](./mysql.js) is provided.
+A copy of [mysql.js](./example/mysql.js) is provided.
 
 ## Feedback
 
